@@ -1,5 +1,5 @@
 [package]
-name = "byteorder"
+name = "byteorder_core_io"
 # NB: When modifying, also modify html_root_url in lib.rs
 version = "1.2.1"  #:version
 authors = ["Andrew Gallant <jamslam@gmail.com>"]
@@ -13,7 +13,7 @@ keywords = ["byte", "endian", "big-endian", "little-endian", "binary"]
 license = "Unlicense/MIT"
 
 [lib]
-name = "byteorder"
+name = "byteorder_core_io"
 bench = false
 
 [dependencies]
