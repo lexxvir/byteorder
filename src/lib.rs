@@ -42,18 +42,34 @@ assert_eq!(wtr, vec![5, 2, 0, 3]);
 #![cfg_attr(all(feature = "i128", test), feature(i128))]
 #![doc(html_root_url = "https://docs.rs/byteorder/1.2.1")]
 
-#[cfg(feature = "std")]
-extern crate core;
+
+#[cfg(feature = "core_io")]
+extern crate core_io;
+
+#[cfg(feature = "core_io")]
+pub(crate) mod std {
+    pub(crate) mod io {
+        pub(crate) use core_io::*;
+    }
+
+    pub(crate) mod slice {
+        pub(crate) use core::slice::*;
+    }
+
+    pub(crate) mod mem {
+        pub(crate) use core::mem::*;
+    }
+}
 
 use core::fmt::Debug;
 use core::hash::Hash;
 use core::mem::transmute;
 use core::ptr::copy_nonoverlapping;
 
-#[cfg(feature = "std")]
+#[cfg(any(feature = "std", feature = "core_io"))]
 pub use io::{ReadBytesExt, WriteBytesExt};
 
-#[cfg(feature = "std")]
+#[cfg(any(feature = "std", feature = "core_io"))]
 mod io;
 
 #[inline]

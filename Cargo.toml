@@ -16,6 +16,9 @@ license = "Unlicense/MIT"
 name = "byteorder"
 bench = false
 
+[dependencies]
+core_io = { version = "0.1.20170615", optional = true }
+
 [dev-dependencies]
 quickcheck = { version = "0.5", default-features = false }
 rand = "0.3"
